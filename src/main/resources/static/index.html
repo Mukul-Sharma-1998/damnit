@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<div id="username-page">
+    <h2>Enter Room ID to join or Create a New Room</h2>
+    <form id="usernameForm">
+        <input type="text" id="roomId" placeholder="Enter Room ID" required>
+        <button type="submit">Join / Create Room</button>
+    </form>
+</div>
+<div id="chat-page" class="hidden">
+    <h2>Room: <span id="roomIdDisplay"></span></h2>
+    <ul id="messageArea"></ul>
+    <form id="messageForm">
+        <input type="text" id="message" placeholder="Type your message" required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Chat Application</title>-->
+<!--    <link rel="stylesheet" href="/css/main.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="username-page">-->
+<!--    <h2>Enter Room ID to join or Create a New Room</h2>-->
+<!--    <form id="usernameForm">-->
+<!--        <input type="text" id="roomId" placeholder="Enter Room ID" reqSuired>-->
+<!--        <button type="submit">Join Room</button>-->
+<!--    </form>-->
+<!--    <button id="createRoomBtn">Create Room</button> &lt;!&ndash; Add create room button &ndash;&gt;-->
+<!--</div>-->
+<!--<div id="chat-page" class="hidden">-->
+<!--    <h2>Room: <span id="roomIdDisplay"></span></h2>-->
+<!--    <ul id="messageArea"></ul>-->
+<!--    <form id="messageForm">-->
+<!--        <input type="text" id="message" placeholder="Type your message" required>-->
+<!--        <button type="submit">Send</button>-->
+<!--    </form>-->
+<!--</div>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.min.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>-->
+<!--<script src="/js/main.js"></script>-->
+<!--<script src="/js/main.js"></script>-->
+<!--</body>-->
+<!--</html>-->
