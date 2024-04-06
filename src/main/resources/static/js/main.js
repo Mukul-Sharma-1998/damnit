@@ -4,7 +4,7 @@ var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
-var createRoomBtn = document.querySelector('#createRoomBtn');
+//var createRoomBtn = document.querySelector('#createRoomBtn');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
@@ -93,9 +93,9 @@ usernameForm.addEventListener('submit', function(event) {
     captureRoomId();
     connect();
 });
-createRoomBtn.addEventListener('click', function(event) {
-     event.preventDefault(); // Prevent the default form submission behavior
-     generateRoomId();
-     connect();
-});
+//createRoomBtn.addEventListener('click', function(event) {
+//     event.preventDefault(); // Prevent the default form submission behavior
+//     generateRoomId();
+//     connect();
+//});
 messageForm.addEventListener('submit', sendMessage, true);
