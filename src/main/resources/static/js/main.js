@@ -4,10 +4,11 @@ var usernamePage = document.querySelector('#username-page');
 var chatPage = document.querySelector('#chat-page');
 var usernameForm = document.querySelector('#usernameForm');
 var messageForm = document.querySelector('#messageForm');
-//var createRoomBtn = document.querySelector('#createRoomBtn');
+var createRoomBtn = document.querySelector('#createRoomBtn');
 var messageInput = document.querySelector('#message');
 var messageArea = document.querySelector('#messageArea');
 var connectingElement = document.querySelector('.connecting');
+var roomIdDisplay = document.querySelector('#roomIdDisplay');
 
 var stompClient = null;
 var roomId = null; // Ensure roomId is declared
@@ -31,7 +32,6 @@ function captureRoomId(){
     sessionStorage.setItem('roomId', roomId);
 }
 
-
 function connect(event) {
     console.log("sendMessage");
     usernamePage.classList.add('hidden');
@@ -47,6 +47,7 @@ function connect(event) {
 function onConnected() {
     // Subscribe to the destination where you expect to receive messages
     stompClient.subscribe('/topic/' + roomId.trim(), onMessageReceived);
+    roomIdDisplay.textContent = 'Room ID: ' + roomId;
 }
 
 function onError(error) {
@@ -57,23 +58,16 @@ function onError(error) {
 function sendMessage(event) {
     var messageContent = messageInput.value.trim();
     var roomId = sessionStorage.getItem('roomId', roomId);
-//    var roomId = "1234";
-
     if (stompClient && messageContent && roomId) {
         var codeMessage = {
             content: messageContent
         };
         stompClient.send("/app/codeShare/" + roomId, {}, JSON.stringify(codeMessage));
-
         messageInput.value = '';
     }
 
     event.preventDefault();
 }
-
-
-
-
 
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
@@ -87,15 +81,16 @@ function onMessageReceived(payload) {
     messageArea.scrollTop = messageArea.scrollHeight;
 }
 
-//usernameForm.addEventListener('submit', connect, true); // Change to connect function
 usernameForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission behavior
     captureRoomId();
     connect();
 });
-//createRoomBtn.addEventListener('click', function(event) {
-//     event.preventDefault(); // Prevent the default form submission behavior
-//     generateRoomId();
-//     connect();
-//});
+
+createRoomBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default form submission behavior
+    generateRoomId();
+    connect();
+});
+
 messageForm.addEventListener('submit', sendMessage, true);
